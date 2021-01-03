@@ -326,14 +326,6 @@ class LeafDataStore:
         self.request_in_progress = False
         async_dispatcher_send(self.hass, SIGNAL_UPDATE_LEAF)
 
-    @staticmethod
-    def _extract_start_date(battery_info):
-        """Extract the server date from the battery response."""
-        try:
-            return battery_info.answer["BatteryStatusRecords"]["OperationDateAndTime"]
-        except KeyError:
-            return None
-
     async def async_get_battery(self):
         """Request battery update from Nissan servers."""
 
